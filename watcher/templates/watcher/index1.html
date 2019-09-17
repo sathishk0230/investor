@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+
+<head>
+	<title>trade station</title>
+  {% load staticfiles %}
+  <link href="{% static 'watcher/css/fontawesome-free-5.8.2-web/css/fontawesome.css' %}" rel="stylesheet">
+  <link href="{% static 'watcher/css/fontawesome-free-5.8.2-web/css/brands.css' %}" rel="stylesheet">
+  <link href="{% static 'watcher/css/fontawesome-free-5.8.2-web/css/solid.css' %}" rel="stylesheet">
+  <link rel="stylesheet" href="{% static 'watcher/css/bootstrap.min.css' %}">
+  <link rel="stylesheet" href="{% static 'watcher/css/mycss.css' %}">
+
+  <script type="text/javascript" src="{% static 'watcher/js/popper.min.js' %}"></script>
+  <script type="text/javascript" src="{% static 'watcher/js/bootstrap.min.js' %}"></script>
+  <script type="text/javascript" src="{% static 'watcher/js/jquery-3.4.1.js' %}"></script>
+  <script type="text/javascript" src="{% static 'watcher/js/userfunctions.js' %}"></script>
+</head>
+
+<body onload = "JavaScript:AutoRefresh(120000);">
+
+<nav class="navbar navbar-expand-lg navbar-expand-md navbar-expand-sm navbar-light bg-light">
+  <a class="navbar-brand" href="#">Investor</a>
+  
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item ">
+        <a class="nav-link" href="#">Home</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">OrderBook</a>
+      </li>
+      <li class="nav-item active">
+        <a class="nav-link" href="#">Trade Station</a>
+      </li>
+      
+    </ul>
+  </div>
+</nav>
+  
+  <div class="container-fluid padding">
+    <a class="btn btn-primary btn-sm" href="/watcher?order=bpc">Buy per chg asc</a>
+    <a class="btn btn-primary btn-sm" href="/watcher?order=-bpc">Buy per chg desc</a>
+    <a class="btn btn-primary btn-sm" href="/watcher?order=spc">Sell per chg asc </a>
+    <a class="btn btn-primary btn-sm" href="/watcher?order=-spc">Sell per chg desc </a>
+    <a class="btn btn-primary btn-sm" href="/watcher?order=a">alphabetical asc </a>
+    <a class="btn btn-primary btn-sm" href="/watcher?order=-a">alphabetical desc </a>
+  </div>
+  
+  <div class="container-fluid padding">
+   <table class="table table-hover">
+    <thead>
+      <tr>
+        <th>Symbol</th>
+        <th>Current Price</th>
+        <th>Buy Watch Price</th>
+        <th>Per buy change</th>
+        <th>Sell Watch Price</th>
+        <th>Per sell change</th>
+        <th>52w high</th>
+        <th>52w low</th>
+        <th>Pin</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for eq in pinned_equitys %}
+      <tr>
+        <!-- {% url 'watcher:detail' symbol=eq.symbol %} -->
+        <td><a class="symbol" href="/admin/watcher/equity/{{eq.pk}}/change/">{{ eq.symbol }}</a></td>
+        <td>{{eq.ltp}}</td>
+        <td>{{eq.buy_watch_price}}</td>
+        <td class="per_buy">{{eq.buy_per_change}}</td>
+        <td>{{eq.sell_watch_price}}</td>
+        <td class="per_sell">{{eq.sell_per_change}}</td>
+        <td class="52_h">{{eq.y_h}}</td>
+        <td class="52_l">{{eq.y_l}}</td>        
+        <td><a href="/watcher/?pin={{eq.symbol}}"><i class="fas fa-thumbtack"></i></a></td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+  
+  <br>  
+  
+  <table class="table table-hover">
+    <thead>
+      <tr>
+        <th>Symbol</th>
+        <th>Current Price</th>
+        <th>Buy Watch Price</th>
+        <th>Per buy change</th>
+        <th>Sell Watch Price</th>
+        <th>Per sell change</th>
+        <th>52w high</th>
+        <th>52w low</th>
+        <th>Pin</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for eq in unpinned_equitys %}
+      <tr>
+        <!-- {% url 'watcher:detail' symbol=eq.symbol %} -->
+        <td><a class="symbol" href="/admin/watcher/equity/{{eq.pk}}/change/">{{ eq.symbol }}</a></td>
+        <td>{{eq.ltp}}</td>
+        <td>{{eq.buy_watch_price}}</td>
+        <td class="per_buy">{{eq.buy_per_change}}</td>
+        <td>{{eq.sell_watch_price}}</td>
+        <td class="per_sell">{{eq.sell_per_change}}</td>
+        <td class="52_h">{{eq.y_h}}</td>
+        <td class="52_l">{{eq.y_l}}</td>        
+        <td><a href="/watcher/?pin={{eq.symbol}}"><i class="fas fa-thumbtack"></i></a></td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+  <h4>Not updated</h4>
+  <table class="table table-hover">
+    <thead>
+      <tr>
+        <th>Symbol</th>
+        <th>Current Price</th>
+        <th>Buy Watch Price</th>
+        <th>Per buy change</th>
+        <th>Sell Watch Price</th>
+        <th>Per sell change</th>
+        <th>52w high</th>
+        <th>52w low</th>
+        <th>Pin</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for eq in not_updated %}
+      <tr>
+        <!-- {% url 'watcher:detail' symbol=eq.symbol %} -->
+        <td><a class="symbol" href="/admin/watcher/equity/{{eq.pk}}/change/">{{ eq.symbol }}</a></td>
+        <td>{{eq.ltp}}</td>
+        <td>{{eq.buy_watch_price}}</td>
+        <td class="per_buy">{{eq.buy_per_change}}</td>
+        <td>{{eq.sell_watch_price}}</td>
+        <td class="per_sell">{{eq.sell_per_change}}</td>
+        <td class="52_h">{{eq.y_h}}</td>
+        <td class="52_l">{{eq.y_l}}</td>        
+        <td><a href="/watcher/?pin={{eq.symbol}}"><i class="fas fa-thumbtack"></i></a></td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</div>
+<p>something</p>
+</body>

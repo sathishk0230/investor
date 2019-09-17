@@ -1,0 +1,7 @@
+http://127.0.0.1:8000/watcher/
+
+http://127.0.0.1:8000/admin/
+
+//run the following commands in command prompt
+python manage.py runserver
+python manage.py process_tasks --duration 0

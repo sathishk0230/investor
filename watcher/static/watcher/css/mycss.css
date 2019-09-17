@@ -1,0 +1,40 @@
+.red1 {background-color: rgba(255, 0, 0, 0.2);}
+.red2 {background-color: rgba(255, 0, 0, 0.4);}
+.red3 {background-color: rgba(255, 0, 0, 0.6);}
+
+.red4 {background-color: rgba(255,140,0,0.6);} 
+.red5 {background-color: rgba(255,140,0,1.0);}  
+
+.green1 {background-color: rgba(0, 255, 0, 0.2);}
+.green2 {background-color: rgba(0, 255, 0, 0.6);}
+.green3 {background-color: rgba(0, 255, 0, 1.0);} 
+
+.green4 {background-color: rgba(0, 0, 255, 0.6);} 
+.green5 {background-color: rgba(0, 0, 255, 1.0);} 
+
+
+a {
+    color: black;
+}
+
+/*
+$("tbody tr td.per")[0].parentElement.classList.add("green1");
+
+$("tbody tr td.per")[1].parentElement.classList.add("green2");
+
+$("tbody tr td.per")[2].parentElement.classList.add("green3");
+
+$("tbody tr td.per")[3].parentElement.classList.add("green4");
+
+$("tbody tr td.per")[4].parentElement.classList.add("green5");
+
+$("tbody tr td.per")[5].parentElement.classList.add("red1");
+
+$("tbody tr td.per")[6].parentElement.classList.add("red2");
+
+$("tbody tr td.per")[7].parentElement.classList.add("red3");
+
+$("tbody tr td.per")[8].parentElement.classList.add("red4");
+
+$("tbody tr td.per")[9].parentElement.classList.add("red5");
+*/

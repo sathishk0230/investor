@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+
+<head>
+	<title>trade station</title>
+  {% load staticfiles %}
+  <link href="{% static 'watcher/fontawesome-free-5.8.2-web/css/fontawesome.css' %}" rel="stylesheet">
+  <link href="{% static 'watcher/fontawesome-free-5.8.2-web/css/brands.css' %}" rel="stylesheet">
+  <link href="{% static 'watcher/fontawesome-free-5.8.2-web/css/solid.css' %}" rel="stylesheet">
+
+  <link rel="stylesheet" href="{% static 'watcher/bootstrap.min.css' %}">
+	<link rel="stylesheet" href="{% static 'watcher/bootstrap.min.js' %}">
+  <link rel="stylesheet" href="{% static 'watcher/jquery-3.4.1.js' %}">
+  <link rel="stylesheet" href="{% static 'watcher/popper.min.js' %}">
+
+</head>
+<body>
+<nav class="navbar navbar-expand-lg navbar-expand-md navbar-expand-sm navbar-light bg-light">
+  <a class="navbar-brand" href="#">Investor</a>
+  
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item ">
+        <a class="nav-link" href="#">Home</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">OrderBook</a>
+      </li>
+      <li class="nav-item active">
+        <a class="nav-link" href="#">Trade Station</a>
+      </li>
+    </ul>
+  </div>
+</nav>
+
+<div class="container-fluid padding">
+  
+  <div class="container-fluid padding">
+    <div class="row welcome text-left">
+      <div class="col-12">
+        <h3>Pinned</h3>
+      </div>
+    </div>
+  </div>
+
+  <div class="container-fluid padding">
+    <div class="row">
+      {% for eq in equitys %}
+      <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3 col-xl-2 border rounded">
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <a href="/watcher/{{eq.symbol}}/">{{ eq.symbol }}</a>
+            <div></div>
+          </div>
+          <div class="panel-body">Price 100000</div>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+</body>
